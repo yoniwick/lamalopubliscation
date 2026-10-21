@@ -64,6 +64,14 @@
     root.lang = lang;
     root.dir = lang === "he" ? "rtl" : "ltr";
     root.setAttribute("data-lang", lang);
+    // Links to the other page carry the language along
+    document.querySelectorAll("a[data-page-link]").forEach(function (a) {
+      var base = a.getAttribute("data-href") || a.getAttribute("href");
+      a.setAttribute("data-href", base);
+      var hash = base.indexOf("#") > -1 ? base.slice(base.indexOf("#")) : "";
+      var path = hash ? base.slice(0, base.indexOf("#")) : base;
+      a.setAttribute("href", path + (lang === "zh-Hant" ? "" : "?lang=" + lang) + hash);
+    });
     document.querySelectorAll(".lang-switch button").forEach(function (b) {
       b.setAttribute("aria-pressed", String(b.getAttribute("data-lang") === lang));
     });
@@ -116,7 +124,7 @@
   document.addEventListener("click", function (e) { if (!header.contains(e.target)) setMenu(false); });
 
   /* ---------- Active nav link ---------- */
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".site-nav a"));
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.site-nav a[href^="#"]'));
   if ("IntersectionObserver" in window) {
     var sectionIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -133,6 +141,17 @@
       if (s) sectionIO.observe(s);
     });
   }
+
+  /* ---------- Themes: hovering a topic lights up its node in the diagram ---------- */
+  document.querySelectorAll(".theme-list [data-topic]").forEach(function (item) {
+    var node = document.querySelector('.constellation [data-topic="' + item.getAttribute("data-topic") + '"]');
+    function on() { item.classList.add("is-active"); if (node) node.classList.add("is-active"); }
+    function off() { item.classList.remove("is-active"); if (node) node.classList.remove("is-active"); }
+    item.addEventListener("mouseenter", on);
+    item.addEventListener("mouseleave", off);
+    item.addEventListener("focus", on);
+    item.addEventListener("blur", off);
+  });
 
   /* ---------- Reveal on scroll ---------- */
   var reveals = document.querySelectorAll(".reveal");

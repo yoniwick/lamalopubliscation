@@ -63,7 +63,8 @@ function listen(port, triesLeft) {
     const url = `http://localhost:${port}/`;
     console.log("");
     console.log("  Lamalo Publication - local preview");
-    console.log("  " + url);
+    console.log("  Home page: " + url);
+    console.log("  Book page: " + url + "two-messiahs.html");
     console.log("");
     console.log("  Other languages:");
     console.log("    " + url + "?lang=zh-Hans");
