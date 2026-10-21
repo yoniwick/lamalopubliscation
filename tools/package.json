@@ -1,0 +1,13 @@
+{
+  "name": "lamalo-site-tools",
+  "private": true,
+  "type": "module",
+  "description": "Regenerates the Simplified Chinese dictionary from the Traditional Chinese text in index.html",
+  "scripts": {
+    "build:zh-hans": "node build-zh-hans.mjs"
+  },
+  "devDependencies": {
+    "node-html-parser": "^6.1.13",
+    "opencc-js": "^1.0.5"
+  }
+}

@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="zh-Hant" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title data-i18n="meta.title">兩種彌賽亞｜Lamalo Publication</title>
+  <meta name="description" data-i18n-attr="content:meta.description" content="《兩種彌賽亞：猶太教為何不接受耶穌為彌賽亞》，Jonathan Binyamin Lam 著。Lamalo Publication 首部出版作品，中文版首發，英文版與希伯來文版即將推出。">
+  <meta name="theme-color" content="#1d2238">
+  <meta property="og:type" content="book">
+  <meta property="og:site_name" content="Lamalo Publication">
+  <meta property="og:title" data-i18n-attr="content:meta.title" content="兩種彌賽亞｜Lamalo Publication">
+  <meta property="og:description" data-i18n-attr="content:meta.description" content="《兩種彌賽亞：猶太教為何不接受耶穌為彌賽亞》，Jonathan Binyamin Lam 著。Lamalo Publication 首部出版作品，中文版首發，英文版與希伯來文版即將推出。">
+  <meta property="og:image" content="assets/img/cover-art.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <!-- Apply the visitor's language before first paint to avoid a flash of the wrong language -->
+  <script>
+    (function () {
+      var LANGS = ["zh-Hant", "zh-Hans", "en", "he"];
+      function pick() {
+        try {
+          var q = new URLSearchParams(location.search).get("lang");
+          if (q && LANGS.indexOf(q) > -1) return q;
+        } catch (e) {}
+        try {
+          var s = localStorage.getItem("lamalo-lang");
+          if (s && LANGS.indexOf(s) > -1) return s;
+        } catch (e) {}
+        var list = navigator.languages || [navigator.language || ""];
+        for (var i = 0; i < list.length; i++) {
+          var l = String(list[i]).toLowerCase();
+          if (/^zh-(hans|cn|sg|my)/.test(l)) return "zh-Hans";
+          if (/^zh/.test(l)) return "zh-Hant";
+          if (/^(he|iw)/.test(l)) return "he";
+          if (/^en/.test(l)) return "en";
+        }
+        return "en";
+      }
+      var lang = pick();
+      var root = document.documentElement;
+      root.classList.add("js");
+      root.setAttribute("data-lang", lang);
+      if (lang !== "zh-Hant") {
+        root.lang = lang;
+        root.dir = lang === "he" ? "rtl" : "ltr";
+        root.classList.add("i18n-pending");
+        setTimeout(function () { root.classList.remove("i18n-pending"); }, 2500);
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Frank+Ruhl+Libre:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700&family=Noto+Serif+TC:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">跳至主要內容</a>
+
+  <!-- ============ Header ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Lamalo Publication">
+        <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+          <circle class="brand__sun" cx="27" cy="12.5" r="5"/>
+          <path class="brand__hill" d="M3 31.5c4.5-2.6 7.6-9.4 12-9.4 3.6 0 4.7 4.2 8 4.2 3.4 0 5.6-6.2 9-6.2 2.6 0 3.8 2.6 5 4"/>
+        </svg>
+        <span class="brand__word">
+          <span class="brand__name">LAMALO</span>
+          <span class="brand__sub">PUBLICATION</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" id="siteNav" data-i18n-attr="aria-label:a11y.nav" aria-label="主選單">
+        <a href="#book" data-i18n="nav.book">本書</a>
+        <a href="#concept" data-i18n="nav.concept">核心概念</a>
+        <a href="#contents" data-i18n="nav.contents">目錄</a>
+        <a href="#author" data-i18n="nav.author">作者</a>
+        <a href="#editions" data-i18n="nav.editions">版本</a>
+      </nav>
+
+      <div class="lang-switch" role="group" data-i18n-attr="aria-label:a11y.lang" aria-label="選擇語言">
+        <button type="button" data-lang="zh-Hant" lang="zh-Hant" title="繁體中文">繁</button>
+        <button type="button" data-lang="zh-Hans" lang="zh-Hans" title="简体中文">简</button>
+        <button type="button" data-lang="en" lang="en" title="English">EN</button>
+        <button type="button" data-lang="he" lang="he" title="עברית">עב</button>
+      </div>
+
+      <button class="menu-toggle" type="button" aria-controls="siteNav" aria-expanded="false" data-i18n-attr="aria-label:a11y.menu" aria-label="開啟選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ Hero ============ -->
+    <section class="hero" id="top">
+      <img class="hero__art" src="assets/img/cover-art.webp" width="2000" height="1116" fetchpriority="high"
+           data-i18n-attr="alt:hero.alt" alt="封面插畫：晨霧中的耶路撒冷古城，以及山頂上一張放著金冠的空寶座">
+      <canvas class="hero__dust" aria-hidden="true"></canvas>
+      <div class="hero__veil" aria-hidden="true"></div>
+
+      <div class="container hero__container">
+        <div class="hero__inner">
+          <p class="eyebrow eyebrow--light" data-i18n="hero.eyebrow">Lamalo Publication　首部出版作品</p>
+          <h1 class="hero__title" data-i18n="hero.title">兩種彌賽亞</h1>
+          <p class="hero__subtitle" data-i18n="hero.subtitle">猶太教為何不接受耶穌為彌賽亞</p>
+          <p class="hero__author" data-i18n="hero.author">Jonathan Binyamin Lam　著</p>
+          <p class="hero__lede" data-i18n="hero.lede">同一個詞，兩個不同的概念。一位在基督教家庭長大、後來成為正統派猶太人的作者，回到希伯來原文與猶太傳統，以尊重與誠實的態度，說明兩種彌賽亞觀的真正分歧。</p>
+          <div class="hero__actions">
+            <a class="btn btn--gold" href="#book" data-i18n="hero.cta1">認識本書</a>
+            <a class="btn btn--ghost" href="#author" data-i18n="hero.cta2">關於作者</a>
+          </div>
+          <p class="hero__editions" data-i18n="hero.editions">中文版首發　·　英文版、希伯來文版即將推出</p>
+        </div>
+      </div>
+
+      <a class="hero__scroll" href="#book" data-i18n-attr="aria-label:a11y.scroll" aria-label="向下捲動">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ============ About the book ============ -->
+    <section class="section section--book" id="book">
+      <div class="container book-grid">
+        <div class="book-stage reveal">
+          <div class="book3d" aria-hidden="true">
+            <div class="book3d__front">
+              <div class="book3d__mist"></div>
+              <div class="book3d__text">
+                <p class="book3d__title" data-i18n="cover.title">兩種彌賽亞</p>
+                <p class="book3d__subtitle" data-i18n="cover.subtitle">猶太教為何不接受耶穌為彌賽亞</p>
+              </div>
+              <div class="book3d__foot">
+                <p class="book3d__author">Jonathan Binyamin Lam</p>
+                <p class="book3d__imprint">LAMALO PUBLICATION</p>
+              </div>
+            </div>
+            <div class="book3d__spine">
+              <span data-i18n="cover.title">兩種彌賽亞</span>
+              <span class="book3d__spine-author">Jonathan Binyamin Lam</span>
+            </div>
+            <div class="book3d__pages"></div>
+            <div class="book3d__back"></div>
+          </div>
+          <div class="book-shadow" aria-hidden="true"></div>
+        </div>
+
+        <div class="book-copy">
+          <p class="kicker reveal" data-i18n="book.kicker">關於本書</p>
+          <h2 class="section-title reveal" data-i18n="book.heading">同一個詞，指的卻是兩個不同的概念</h2>
+          <div class="prose reveal">
+            <p data-i18n="book.p1">本書的核心論點很簡單：猶太教與基督教雖然使用同一個詞「彌賽亞」，指的卻是兩個不同的概念。因此，猶太人拒絕耶穌，並非出於固執或敵意，而是因為基督教所描述的「彌賽亞」，根本不符合希伯來聖經與猶太傳統所定義的彌賽亞。</p>
+            <p data-i18n="book.p2">本書從猶太教的立場出發，依據希伯來聖經（塔納赫）、塔木德、米德拉什，以及邁蒙尼德（Rambam）、拉希（Rashi）、拿赫曼尼德（Ramban）等中世紀權威的著作，說明猶太教的彌賽亞觀。凡是基督教引用的關鍵經文，都回到希伯來原文與上下文來閱讀。</p>
+            <p data-i18n="book.p3">這不是一本攻擊基督徒信仰的書。作者寫這本書，不是為了贏得一場辯論，而是出於愛，邀請他所愛的人一同回到亞伯拉罕、以撒、雅各的神面前。</p>
+          </div>
+          <dl class="stats reveal">
+            <div><dt>3</dt><dd data-i18n="stats.parts">部</dd></div>
+            <div><dt>11</dt><dd data-i18n="stats.chapters">章</dd></div>
+            <div><dt>4</dt><dd data-i18n="stats.appendices">篇附錄</dd></div>
+            <div><dt>3</dt><dd data-i18n="stats.languages">種語言</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Pull quote ============ -->
+    <section class="quote-band" aria-labelledby="quote1">
+      <div class="quote-band__shards" aria-hidden="true"></div>
+      <div class="container">
+        <figure class="quote reveal">
+          <blockquote id="quote1"><p data-i18n="quote1.text">彌賽亞首先是一個「職分」，而不是一種「本質」。他是一位被膏立的人，一位君王。</p></blockquote>
+          <figcaption data-i18n="quote1.cite">——第一章〈受膏者：「彌賽亞」一詞的本義〉</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ Key concept ============ -->
+    <section class="section section--concept" id="concept">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker" data-i18n="concept.kicker">核心概念</p>
+          <h2 class="section-title" data-i18n="concept.heading">推定的彌賽亞與確定的彌賽亞</h2>
+          <p class="section-intro" data-i18n="concept.intro">十二世紀的邁蒙尼德在《密西拿妥拉》〈君王律例〉中，把彌賽亞的條件寫成了法律條文。彌賽亞的身份，是可以用具體標準來檢驗的。</p>
+        </header>
+
+        <div class="flow reveal">
+          <article class="flow__card flow__card--start">
+            <p class="flow__label" data-i18n="stage1.label">第一階段</p>
+            <h3 class="flow__title" data-i18n="stage1.title">推定的彌賽亞</h3>
+            <p class="flow__term" data-i18n="stage1.term">bechezkat Mashiach</p>
+            <p class="flow__text" data-i18n="stage1.text">一位出自大衛家的君王興起，鑽研妥拉、遵行誡命，帶領全以色列遵行妥拉並鞏固其破口，並為神爭戰。</p>
+          </article>
+
+          <div class="flow__link flow__link--yes">
+            <span class="flow__link-label" data-i18n="flow.yes">若他成功</span>
+            <span class="flow__arrow" aria-hidden="true"></span>
+          </div>
+          <article class="flow__card flow__card--yes">
+            <p class="flow__label" data-i18n="stage2.label">第二階段</p>
+            <h3 class="flow__title" data-i18n="stage2.title">確定的彌賽亞</h3>
+            <p class="flow__term" data-i18n="stage2.term">Mashiach vadai</p>
+            <p class="flow__text" data-i18n="stage2.text">他做到了，並且成功了：在原址重建聖殿，並召集以色列被分散的人歸回。</p>
+          </article>
+
+          <div class="flow__link flow__link--no">
+            <span class="flow__link-label" data-i18n="flow.no">若他失敗或被殺</span>
+            <span class="flow__arrow" aria-hidden="true"></span>
+          </div>
+          <article class="flow__card flow__card--no">
+            <p class="flow__label" data-i18n="stage3.label">推定被推翻</p>
+            <h3 class="flow__title" data-i18n="stage3.title">他不是那一位</h3>
+            <p class="flow__text" data-i18n="stage3.text">若他沒有成功，或是被殺了，那就可知他不是妥拉所應許的那一位；他只是一位曾經死去的大衛家君王而已。</p>
+          </article>
+        </div>
+        <p class="flow__cite reveal" data-i18n="concept.cite">——邁蒙尼德〈君王律例〉11:4（作者意譯）</p>
+
+        <div class="concept-foot">
+          <aside class="case reveal">
+            <p class="case__kicker" data-i18n="case.kicker">歷史案例</p>
+            <h3 class="case__title" data-i18n="case.title">巴爾·科赫巴（西元132–135年）</h3>
+            <p data-i18n="case.text">當時最偉大的拉比之一阿基瓦，宣告領導反抗羅馬大起義的巴爾·科赫巴「就是王彌賽亞」。起義失敗、他戰死之後，結論是明確的：他不是彌賽亞。沒有人主張他的死是計劃的一部分，也沒有人等候他再來。</p>
+          </aside>
+          <div class="concept-conclusion reveal">
+            <p data-i18n="concept.conclusion">本書的結論是：即使承認耶穌在世時曾經是一位「可能的彌賽亞」，按照適用於每一位候選人的同一個標準，他也已經不是了。而基督教的根本誤解，正是把「可能成為彌賽亞的人」當成了「已經是彌賽亞的人」。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Four tasks ============ -->
+    <section class="section section--tasks" id="tasks">
+      <div class="container">
+        <header class="section-head section-head--center reveal">
+          <p class="kicker" data-i18n="tasks.kicker">先知的應許</p>
+          <h2 class="section-title" data-i18n="tasks.heading">彌賽亞時代的四項任務</h2>
+          <p class="section-intro" data-i18n="tasks.intro">希伯來先知對彌賽亞時代的描述，可以歸納為四項公開、可觀察的任務。彌賽亞是誰，取決於這些事是否在他手中成就。</p>
+        </header>
+
+        <ol class="tasks">
+          <li class="task reveal">
+            <span class="task__num">01</span>
+            <svg class="task__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 19 24 8l18 11"/><path d="M8 19h32"/><path d="M11 23v15M18.5 23v15M29.5 23v15M37 23v15"/><path d="M6 41h36"/><path d="M8 38h32"/></svg>
+            <h3 class="task__title" data-i18n="task1.title">重建聖殿</h3>
+            <p class="task__ref" data-i18n="task1.ref">以西結書37:26–28；以賽亞書2:2–3</p>
+            <p class="task__text" data-i18n="task1.text">神的聖所要永遠立在以色列中間。</p>
+          </li>
+          <li class="task reveal">
+            <span class="task__num">02</span>
+            <svg class="task__icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="5"/><path d="M24 4v11M24 33v11M4 24h11M33 24h11"/><path d="m19.5 10.5 4.5 4.5 4.5-4.5M19.5 37.5l4.5-4.5 4.5 4.5M10.5 19.5l4.5 4.5-4.5 4.5M37.5 19.5 33 24l4.5 4.5"/></svg>
+            <h3 class="task__title" data-i18n="task2.title">召集流散者</h3>
+            <p class="task__ref" data-i18n="task2.ref">以賽亞書11:11–12、43:5–6；申命記30:3</p>
+            <p class="task__text" data-i18n="task2.text">以色列各支派從地極歸回故土。</p>
+          </li>
+          <li class="task reveal">
+            <span class="task__num">03</span>
+            <svg class="task__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 41C17 33 28 21 40 7"/><path d="M15 34c-4.6-.4-7.2-3.4-7.4-7.6 4.4.2 7.3 3 7.4 7.6Z"/><path d="M15 34c.6 4.2 3.6 6.6 7.8 6.6-.2-4.3-3.2-6.8-7.8-6.6Z"/><path d="M23 25c-4.6-.4-7.2-3.4-7.4-7.6 4.4.2 7.3 3 7.4 7.6Z"/><path d="M23 25c.6 4.2 3.6 6.6 7.8 6.6-.2-4.3-3.2-6.8-7.8-6.6Z"/><path d="M31 16c-4.4-.6-6.6-3.6-6.6-7.8 4.2.4 6.8 3.4 6.6 7.8Z"/><path d="M31 16c.8 4 3.8 6.2 7.8 6-.4-4.2-3.4-6.4-7.8-6Z"/></svg>
+            <h3 class="task__title" data-i18n="task3.title">世界和平</h3>
+            <p class="task__ref" data-i18n="task3.ref">以賽亞書2:4、11:6–9；彌迦書4:3</p>
+            <p class="task__text" data-i18n="task3.text">列國把刀打成犁頭，不再學習戰事。</p>
+          </li>
+          <li class="task reveal">
+            <span class="task__num">04</span>
+            <svg class="task__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 36h40"/><path d="M13 36a11 11 0 0 1 22 0"/><path d="M24 8v8M10.5 13.5l5 5M37.5 13.5l-5 5M4 25h6M38 25h6"/><path d="M10 41h28"/></svg>
+            <h3 class="task__title" data-i18n="task4.title">普世認識獨一真神</h3>
+            <p class="task__ref" data-i18n="task4.ref">撒迦利亞書14:9；耶利米書31:33–34；以賽亞書11:9</p>
+            <p class="task__text" data-i18n="task4.text">那日耶和華必為獨一無二的，認識神的知識要充滿遍地。</p>
+          </li>
+        </ol>
+        <p class="tasks__note reveal" data-i18n="tasks.note">這些任務都是公開的、在歷史之中發生的，而且是彌賽亞的定義本身。若這些事沒有發生，那麼無論一個人多麼聖潔、多麼有智慧、行了多少神蹟，他都不是彌賽亞。</p>
+      </div>
+    </section>
+
+    <!-- ============ Comparison ============ -->
+    <section class="section section--compare" id="compare">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker" data-i18n="compare.kicker">兩種概念</p>
+          <h2 class="section-title" data-i18n="compare.heading">猶太教的彌賽亞與基督教的基督</h2>
+        </header>
+
+        <div class="compare reveal" role="table" data-i18n-attr="aria-label:compare.heading" aria-label="猶太教的彌賽亞與基督教的基督">
+          <div class="compare__row compare__row--head" role="row">
+            <span role="columnheader" data-i18n="compare.col0">項目</span>
+            <span role="columnheader" data-i18n="compare.col1">猶太教的彌賽亞</span>
+            <span role="columnheader" data-i18n="compare.col2">基督教的基督</span>
+          </div>
+          <div class="compare__row" role="row">
+            <span role="rowheader" data-i18n="cmp1.k">本質</span>
+            <span role="cell" data-i18n-attr="data-label:compare.col1" data-label="猶太教的彌賽亞" data-i18n="cmp1.a">人，大衛家的君王</span>
+            <span role="cell" data-i18n-attr="data-label:compare.col2" data-label="基督教的基督" data-i18n="cmp1.b">神成為人</span>
+          </div>
+          <div class="compare__row" role="row">
+            <span role="rowheader" data-i18n="cmp2.k">主要工作</span>
+            <span role="cell" data-i18n-attr="data-label:compare.col1" data-label="猶太教的彌賽亞" data-i18n="cmp2.a">復興以色列、重建聖殿、帶來和平</span>
+            <span role="cell" data-i18n-attr="data-label:compare.col2" data-label="基督教的基督" data-i18n="cmp2.b">為罪而死、使信者得救</span>
+          </div>
+          <div class="compare__row" role="row">
+            <span role="rowheader" data-i18n="cmp3.k">國度</span>
+            <span role="cell" data-i18n-attr="data-label:compare.col1" data-label="猶太教的彌賽亞" data-i18n="cmp3.a">在歷史中、在地上</span>
+            <span role="cell" data-i18n-attr="data-label:compare.col2" data-label="基督教的基督" data-i18n="cmp3.b">主要是屬靈的、在末世完成</span>
+          </div>
+          <div class="compare__row" role="row">
+            <span role="rowheader" data-i18n="cmp4.k">死亡</span>
+            <span role="cell" data-i18n-attr="data-label:compare.col1" data-label="猶太教的彌賽亞" data-i18n="cmp4.a">任務未完成前死亡，即證明不是彌賽亞</span>
+            <span role="cell" data-i18n-attr="data-label:compare.col2" data-label="基督教的基督" data-i18n="cmp4.b">死亡是任務的核心</span>
+          </div>
+          <div class="compare__row" role="row">
+            <span role="rowheader" data-i18n="cmp5.k">妥拉</span>
+            <span role="cell" data-i18n-attr="data-label:compare.col1" data-label="猶太教的彌賽亞" data-i18n="cmp5.a">被全面遵行</span>
+            <span role="cell" data-i18n-attr="data-label:compare.col2" data-label="基督教的基督" data-i18n="cmp5.b">已被成全，不再約束外邦信徒</span>
+          </div>
+          <div class="compare__row" role="row">
+            <span role="rowheader" data-i18n="cmp6.k">證明方式</span>
+            <span role="cell" data-i18n-attr="data-label:compare.col1" data-label="猶太教的彌賽亞" data-i18n="cmp6.a">公開的歷史結果</span>
+            <span role="cell" data-i18n-attr="data-label:compare.col2" data-label="基督教的基督" data-i18n="cmp6.b">信心</span>
+          </div>
+        </div>
+        <p class="compare__note reveal"><span data-i18n="compare.note">猶太人與基督徒爭論「耶穌是不是彌賽亞」時，雙方往往並未意識到，他們說的其實是兩個不同的東西。</span> <span class="compare__cite" data-i18n="compare.cite">——第十章</span></p>
+      </div>
+    </section>
+
+    <!-- ============ Contents ============ -->
+    <section class="section section--contents" id="contents">
+      <div class="container">
+        <header class="section-head section-head--center reveal">
+          <p class="kicker" data-i18n="contents.kicker">目錄</p>
+          <h2 class="section-title" data-i18n="contents.heading">全書結構</h2>
+        </header>
+
+        <div class="parts">
+          <article class="part reveal">
+            <span class="part__mark" aria-hidden="true" data-i18n="part1.mark">壹</span>
+            <p class="part__num" data-i18n="part1.num">第一部</p>
+            <h3 class="part__title" data-i18n="part1.title">概念</h3>
+            <p class="part__desc" data-i18n="part1.desc">說明猶太教的彌賽亞概念本身。</p>
+            <ol class="chapters">
+              <li data-i18n="ch1"><span>第一章</span>受膏者：「彌賽亞」一詞的本義</li>
+              <li data-i18n="ch2"><span>第二章</span>拉比傳統與邁蒙尼德的彌賽亞標準</li>
+              <li data-i18n="ch3"><span>第三章</span>彌賽亞時代的四項任務</li>
+            </ol>
+          </article>
+          <article class="part reveal">
+            <span class="part__mark" aria-hidden="true" data-i18n="part2.mark">貳</span>
+            <p class="part__num" data-i18n="part2.num">第二部</p>
+            <h3 class="part__title" data-i18n="part2.title">分歧</h3>
+            <p class="part__desc" data-i18n="part2.desc">逐一討論兩教的神學分歧與經文爭議。</p>
+            <ol class="chapters">
+              <li data-i18n="ch4"><span>第四章</span>神與人：獨一神論與道成肉身</li>
+              <li data-i18n="ch5"><span>第五章</span>罪與贖：悔改與代贖</li>
+              <li data-i18n="ch6"><span>第六章</span>永恆的妥拉</li>
+              <li data-i18n="ch7"><span>第七章</span>經文之爭</li>
+              <li data-i18n="ch8"><span>第八章</span>大衛血統的問題</li>
+            </ol>
+          </article>
+          <article class="part reveal">
+            <span class="part__mark" aria-hidden="true" data-i18n="part3.mark">參</span>
+            <p class="part__num" data-i18n="part3.num">第三部</p>
+            <h3 class="part__title" data-i18n="part3.title">歷史</h3>
+            <p class="part__desc" data-i18n="part3.desc">回顧歷史：從第二聖殿時期，到中世紀的公開辯論。</p>
+            <ol class="chapters">
+              <li data-i18n="ch9"><span>第九章</span>第二聖殿時期的彌賽亞候選人</li>
+              <li data-i18n="ch10"><span>第十章</span>從拿撒勒人耶穌到基督論</li>
+              <li data-i18n="ch11"><span>第十一章</span>巴塞羅那辯論</li>
+            </ol>
+          </article>
+        </div>
+
+        <article class="backmatter reveal">
+          <h3 class="backmatter__title" data-i18n="back.heading">結論、後記與附錄</h3>
+          <ul class="chapters chapters--two">
+            <li data-i18n="back.conclusion"><span>結論</span>推定的彌賽亞：就算耶穌曾有可能</li>
+            <li data-i18n="back.afterword"><span>後記</span>給基督徒朋友的一封信</li>
+            <li data-i18n="back.app1"><span>附錄一</span>基督教的回應與學術爭議</li>
+            <li data-i18n="back.app2"><span>附錄二</span>參考書目</li>
+            <li data-i18n="back.app3"><span>附錄三</span>詞彙表</li>
+            <li data-i18n="back.app4"><span>附錄四</span>年表</li>
+            <li data-i18n="back.index"><span>索引</span>經文索引</li>
+          </ul>
+          <p class="backmatter__note" data-i18n="back.note">書末附錄公平地介紹基督教學者的主要回應，讓讀者自行判斷。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ Closing quote over the throne ============ -->
+    <section class="throne" aria-labelledby="quote2">
+      <div class="throne__art" aria-hidden="true"></div>
+      <div class="container">
+        <figure class="throne__quote reveal">
+          <blockquote id="quote2">
+            <p data-i18n="quote2.text">世界仍然在等候那把刀打成犁頭的日子。猶太人每日的禱告依然說：「我們每日等候你的救恩。」</p>
+            <p class="throne__em" data-i18n="quote2.text2">彌賽亞是一個尚待歷史證實的應許，而不是一個已經由信心宣告完成的事實。</p>
+          </blockquote>
+          <figcaption data-i18n="quote2.cite">——結論〈推定的彌賽亞：就算耶穌曾有可能〉</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ Afterword letter ============ -->
+    <section class="section section--letter" id="letter">
+      <div class="container">
+        <article class="letter reveal">
+          <p class="kicker" data-i18n="letter.kicker">後記</p>
+          <h2 class="section-title" data-i18n="letter.heading">給基督徒朋友的一封信</h2>
+          <div class="letter__body">
+            <p class="letter__salute" data-i18n="letter.salute">親愛的基督徒朋友：</p>
+            <p data-i18n="letter.p1">如果你讀到這裡，仍然是一位基督徒，我想對你說：這本書不是要你放棄對神的愛，而是邀請你更靠近你早已認識的那一位——以色列的神。</p>
+            <p data-i18n="letter.p2">你從來沒有離開以色列的神太遠。你只是被邀請回家，回到那位亞伯拉罕、以撒、雅各的神，那位耶穌自己也敬拜的神。</p>
+            <p class="letter__blessing" data-i18n="letter.blessing">願祂賜福你，保護你；願祂使祂的臉光照你，賜你平安。</p>
+            <p class="letter__ref" data-i18n="letter.ref">民數記6:24–26</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ Author ============ -->
+    <section class="section section--author" id="author">
+      <div class="container">
+        <div class="author-grid">
+          <figure class="author-photo reveal">
+            <img src="assets/img/author.jpg" width="1500" height="1125" loading="lazy"
+                 data-i18n-attr="alt:author.alt" alt="作者 Jonathan Binyamin Lam 蹲在草地上，身旁是一隻羊">
+          </figure>
+
+          <div class="author-copy">
+            <p class="kicker reveal" data-i18n="author.kicker">作者介紹</p>
+            <h2 class="section-title author-name reveal">Jonathan Binyamin Lam</h2>
+            <p class="author-meta reveal" data-i18n="author.meta">生於加拿大　·　現居以色列與加拿大</p>
+            <div class="prose reveal">
+              <p data-i18n="author.p1">Jonathan Binyamin Lam 生於加拿大，成長與工作的足跡遍及香港、新加坡、中國內地、英國、美國與以色列。多元的文化背景，使他得以從東西方不同的角度，觀察信仰、文明與人類對真理的追尋。</p>
+              <p data-i18n="author.p2">他畢業於電子工程學系，取得學士學位，並曾參與核子與國防領域的研究工作。科學訓練培養了他嚴謹求證的思維：凡事回到原始資料，凡事以可驗證的事實為依據。這種精神，也貫穿了本書的寫作。</p>
+            </div>
+            <div class="places reveal">
+              <p class="places__label" data-i18n="places.label">足跡</p>
+              <p class="places__list" data-i18n="places.list">加拿大・香港・新加坡・中國內地・英國・美國・以色列</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="author-lower">
+          <div class="journey">
+            <h3 class="sub-title reveal" data-i18n="journey.heading">信仰的旅程</h3>
+            <ol class="timeline">
+              <li class="reveal">
+                <span class="timeline__when" data-i18n="j1.when">十歲</span>
+                <p data-i18n="j1.text">出生於一個第三代基督教家庭，自幼在教會中長大。十歲時，他已對基督教的信仰產生疑問：耶穌本身是猶太人，為何他的同胞卻不接受他為彌賽亞？</p>
+              </li>
+              <li class="reveal">
+                <span class="timeline__when" data-i18n="j2.when">二十六歲</span>
+                <p data-i18n="j2.text">毅然放下事業，背起行囊前往以色列，親身尋找信仰的答案。這段旅程使他回到了希伯來聖經的原文與猶太傳統的源頭。</p>
+              </li>
+              <li class="reveal">
+                <span class="timeline__when" data-i18n="j3.when">三十二歲</span>
+                <p data-i18n="j3.text">經過多年的學習與思考，於紐約正式皈依，成為一名正統派（Orthodox）猶太人。此後曾在加拿大、美國與以色列的猶太經學院（Yeshiva）全職鑽研妥拉與塔木德。</p>
+              </li>
+              <li class="reveal">
+                <span class="timeline__when" data-i18n="j4.when">三十五歲</span>
+                <p data-i18n="j4.text">與以色列籍的妻子結婚。</p>
+              </li>
+              <li class="reveal">
+                <span class="timeline__when" data-i18n="j5.when">現在</span>
+                <p data-i18n="j5.text">現居於以色列與加拿大兩地，持續從事研究與寫作。</p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="author-side">
+            <div class="work reveal">
+              <h3 class="sub-title" data-i18n="work.heading">現在的工作</h3>
+              <p data-i18n="work.text">他的研究興趣橫跨科學與信仰，致力探索這些領域之間的交會點：</p>
+              <ul class="tags">
+                <li data-i18n="tag1">量子物理學</li>
+                <li data-i18n="tag2">人類意識</li>
+                <li data-i18n="tag3">人工智能</li>
+                <li data-i18n="tag4">妥拉</li>
+                <li data-i18n="tag5">猶太神秘主義（卡巴拉）</li>
+              </ul>
+            </div>
+            <div class="why reveal">
+              <h3 class="sub-title" data-i18n="why.heading">為何寫這本書</h3>
+              <p data-i18n="why.text">本書可以說是作者對自己十歲時那個問題的回答。作為一位曾在基督教信仰中成長、後來成為猶太人的作者，他既了解基督徒的信仰與情感，也深入研習了猶太教的經典與律法。他希望以尊重與誠實的態度，幫助讀者看清兩種彌賽亞觀的真正分歧，並邀請每一位讀者回到以色列獨一的神面前。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Editions ============ -->
+    <section class="section section--editions" id="editions">
+      <div class="container">
+        <header class="section-head section-head--center reveal">
+          <p class="kicker" data-i18n="editions.kicker">版本</p>
+          <h2 class="section-title" data-i18n="editions.heading">一本書，三種語言</h2>
+        </header>
+
+        <div class="editions">
+          <article class="edition edition--current reveal">
+            <span class="edition__badge" data-i18n="ed.zh.status">首發</span>
+            <p class="edition__title" lang="zh-Hant">兩種彌賽亞</p>
+            <h3 class="edition__lang" data-i18n="ed.zh.lang">中文版</h3>
+            <p class="edition__script" data-i18n="ed.zh.script">繁體中文</p>
+            <a class="btn btn--gold edition__btn" data-buy="zh" href="#" hidden data-i18n="ed.buy">購買／預訂</a>
+            <span class="btn btn--muted edition__btn" data-buy-soon="zh" data-i18n="ed.soon">即將上架</span>
+          </article>
+          <article class="edition reveal">
+            <span class="edition__badge edition__badge--soon" data-i18n="ed.en.status">翻譯中・即將推出</span>
+            <p class="edition__title" lang="en">Two Messiahs</p>
+            <h3 class="edition__lang" data-i18n="ed.en.lang">英文版</h3>
+            <p class="edition__script">English</p>
+            <a class="btn btn--gold edition__btn" data-buy="en" href="#" hidden data-i18n="ed.buy">購買／預訂</a>
+            <span class="btn btn--muted edition__btn" data-buy-soon="en" data-i18n="ed.coming">敬請期待</span>
+          </article>
+          <article class="edition reveal">
+            <span class="edition__badge edition__badge--soon" data-i18n="ed.he.status">即將推出</span>
+            <p class="edition__title" lang="he" dir="rtl">שני משיחים</p>
+            <h3 class="edition__lang" data-i18n="ed.he.lang">希伯來文版</h3>
+            <p class="edition__script" lang="he" dir="rtl">עברית</p>
+            <a class="btn btn--gold edition__btn" data-buy="he" href="#" hidden data-i18n="ed.buy">購買／預訂</a>
+            <span class="btn btn--muted edition__btn" data-buy-soon="he" data-i18n="ed.coming">敬請期待</span>
+          </article>
+        </div>
+
+        <p class="notify reveal" data-contact hidden>
+          <span data-i18n="editions.notify">希望在新版本推出時收到通知？</span>
+          <a class="link" data-contact-link href="#" data-i18n="editions.contact">與我們聯絡</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ Publisher ============ -->
+    <section class="section section--publisher" id="publisher">
+      <div class="container publisher reveal">
+        <svg class="publisher__mark" viewBox="0 0 40 40" aria-hidden="true">
+          <circle class="brand__sun" cx="27" cy="12.5" r="5"/>
+          <path class="brand__hill" d="M3 31.5c4.5-2.6 7.6-9.4 12-9.4 3.6 0 4.7 4.2 8 4.2 3.4 0 5.6-6.2 9-6.2 2.6 0 3.8 2.6 5 4"/>
+        </svg>
+        <p class="kicker" data-i18n="publisher.kicker">出版社</p>
+        <h2 class="section-title" data-i18n="publisher.heading">關於 Lamalo Publication</h2>
+        <p class="publisher__text" data-i18n="publisher.text">Lamalo Publication 以中文、英文與希伯來文出版關於信仰、經典與真理追尋的著作。我們重視原始文獻、嚴謹考據，以及彼此尊重的對話。《兩種彌賽亞》是我們出版的第一本書。</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand brand--footer" href="#top" aria-label="Lamalo Publication">
+        <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+          <circle class="brand__sun" cx="27" cy="12.5" r="5"/>
+          <path class="brand__hill" d="M3 31.5c4.5-2.6 7.6-9.4 12-9.4 3.6 0 4.7 4.2 8 4.2 3.4 0 5.6-6.2 9-6.2 2.6 0 3.8 2.6 5 4"/>
+        </svg>
+        <span class="brand__word">
+          <span class="brand__name">LAMALO</span>
+          <span class="brand__sub">PUBLICATION</span>
+        </span>
+      </a>
+      <div class="footer-meta">
+        <p data-i18n="footer.book">《兩種彌賽亞》© Jonathan Binyamin Lam</p>
+        <p data-i18n="footer.rights">© 2026 Lamalo Publication。版權所有。</p>
+      </div>
+      <div class="footer-actions">
+        <div class="lang-switch lang-switch--footer" role="group" data-i18n-attr="aria-label:a11y.lang" aria-label="選擇語言">
+          <button type="button" data-lang="zh-Hant" lang="zh-Hant">繁體中文</button>
+          <button type="button" data-lang="zh-Hans" lang="zh-Hans">简体中文</button>
+          <button type="button" data-lang="en" lang="en">English</button>
+          <button type="button" data-lang="he" lang="he">עברית</button>
+        </div>
+        <a class="to-top" href="#top" data-i18n="footer.top">回到頂部</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/i18n/zh-Hans.js" defer></script>
+  <script src="assets/i18n/en.js" defer></script>
+  <script src="assets/i18n/he.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
